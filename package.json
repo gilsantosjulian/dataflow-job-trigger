@@ -1,0 +1,22 @@
+{
+  "name": "dataflow-job-trigger",
+  "version": "1.0.0",
+  "description": "Cloud Function to run Dataflow pipeline job",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dataflow",
+    "pipeline",
+    "job",
+    "cloud",
+    "function"
+  ],
+  "author": "Julien Bisconti <julienbi@unity3d.com>",
+  "license": "MIT",
+  "dependencies": {
+    "googleapis": "37.1.0",
+    "@google-cloud/pubsub": "^0.18.0"
+  }
+}
