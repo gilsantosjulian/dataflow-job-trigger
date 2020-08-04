@@ -13,7 +13,7 @@
     "cloud",
     "function"
   ],
-  "author": "Julien Bisconti <julienbi@unity3d.com>",
+  "author": "Julian Gil julian@minka.io",
   "license": "MIT",
   "dependencies": {
     "googleapis": "37.1.0",
