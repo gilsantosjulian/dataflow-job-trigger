@@ -1,6 +1,6 @@
 const google = require('googleapis');
 
-exports.datastoreToBigQueryJob = (event, context) => {
+exports.cloudSQLToBigQueryJob = (event, context) => {
   // in this case the PubSub message payload and attributes are not used
   // but can be used to pass parameters needed by the Dataflow template
   const pubsubMessage = event.data;
@@ -18,18 +18,35 @@ exports.datastoreToBigQueryJob = (event, context) => {
       auth: authClient
     });
 
+    // CloudSQL to BigQuery
     dataflow.projects.templates.create({
-      projectId: projectId,
+      projectId: 'ach-tin-prd',
       resource: {
         parameters: {},
-        jobName: 'datastore-to-bigquery-job',
+        jobName: 'cloudsql-to-bigquery-prd-job',
+        gcsPath: 'gs://cloudsql-to-bigquery-job-prd/templates/cloudSQLToBigQueryJob'
+      }
+    }, function (err, response) {
+      if (err) {
+        console.error("Problem running dataflow template, error was: ", err);
+      }
+      console.log("Dataflow CloudSQL template response: ", response);
+    });
+
+    // Datastore to BigQuery
+    dataflow.projects.templates.create({
+      projectId: 'ach-tin-prd-multireg',
+      resource: {
+        parameters: {},
+        jobName: 'datastore-to-bigquery-prd-job',
         gcsPath: 'gs://datastore-to-bigquery-job-prd-multireg/templates/datastoreToBigQueryJob'
       }
     }, function (err, response) {
       if (err) {
         console.error("Problem running dataflow template, error was: ", err);
       }
-      console.log("Dataflow template response: ", response);
+      console.log("Dataflow Datastore template response: ", response);
     });
+
   });
 };
