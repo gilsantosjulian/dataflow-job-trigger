@@ -16,7 +16,7 @@
   "author": "Julian Gil julian@minka.io",
   "license": "MIT",
   "dependencies": {
-    "googleapis": "37.1.0",
+    "googleapis": "59.0.0",
     "@google-cloud/pubsub": "^0.18.0"
   }
 }
